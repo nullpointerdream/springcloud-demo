@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class UserService {
-    
-    @Value("${foo}")
-    private String foo;
+
     
     @Autowired
     private UserMapper userMapper;
@@ -30,7 +28,7 @@ public class UserService {
      */
     public String sayHiFromClientOne(String name) {
 
-        return "参数"+foo+"-->"+name;
+        return "参数-->"+name;
     }
     
     /** 

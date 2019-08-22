@@ -7,10 +7,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.RequestWrapper;
 
@@ -22,6 +21,7 @@ import javax.xml.ws.RequestWrapper;
  **/
 @RestController
 @Api(description = "用户管理")
+@RefreshScope
 public class Usercontroller {
 
     @Autowired private UserSeviceClient userSeviceClient;
@@ -38,5 +38,11 @@ public class Usercontroller {
         return userSeviceClient.insertUser(user);
     }
 
+    @Value("${neo.hello:error}")
+    private String profile;
 
+    @GetMapping("/info")
+    public String hello() {
+        return profile;
+    }
 }

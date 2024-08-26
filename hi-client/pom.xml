@@ -18,7 +18,7 @@
     </parent>
 
     <properties>
-        <swagger.version>2.6.1</swagger.version>
+        <swagger.version>2.10.0</swagger.version>
     </properties>
 
     <dependencies>
